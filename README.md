@@ -1,20 +1,17 @@
 # 🌦️ WeatherWise — Smart Weather Advisor
 
-Welcome to **WeatherWise**, a smart weather advisor application that combines live weather data with AI-powered natural language responses.  
+Welcome to **WeatherWise**, a smart weather advisor application that combines live weather data with charts, rule-based advice, and natural-language weather questions.  
 This project is based on the **WeatherWise Assignment Starter Template**, enhanced with custom logic, visualisations, and interface design developed by **Waranyu Bancherdvanich**.
 
 ---
 
-![Build With AI](https://img.shields.io/badge/Built_with-AI-blueviolet?logo=openai)
+![Built with AI](https://img.shields.io/badge/Built_with-AI-blueviolet?logo=openai)
 ![Python](https://img.shields.io/badge/Made_with-Python-3776AB?logo=python)
 ![Visualisation](https://img.shields.io/badge/Includes-Visualisations-orange?logo=plotly)
 
 ---
 
-<!-- 📸 Add a screenshot here once the app is running.
-     Upload your image to the repo (e.g. images/temperature-chart.png), then replace the line below:
-![WeatherWise temperature chart](images/temperature-chart.png)
--->
+![WeatherWise app showing the temperature forecast chart](images/weatherwise-demo.png)
 
 ---
 
@@ -23,16 +20,16 @@ This project is based on the **WeatherWise Assignment Starter Template**, enhanc
 **Features**
 - 🌤️ Current weather and 5-day forecast  
 - 📈 Temperature and rainfall charts  
-- 💬 AI-driven weather questions  
+- 💬 Natural-language weather questions  
 - 🧠 Rule-based outdoor advice (“Should I go outside tomorrow?”)
 
 **Core Components**
 - API data retrieval and processing  
 - Matplotlib visualisations  
-- AI conversation features  
+- AI conversation feature  
 - Interactive UI with `ipywidgets`
 
-**Tech Stack:** Python · OpenWeatherMap API · matplotlib · ipywidgets · hands-on-ai
+**Tech Stack:** Python · OpenWeatherMap API · matplotlib · ipywidgets
 
 **My Contribution**
 - Temperature and precipitation visualisations  
@@ -57,10 +54,8 @@ Install dependencies:
 
 ```python
 import os
-os.environ['HANDS_ON_AI_SERVER'] = 'https://ollama.serveur.au'
-os.environ['HANDS_ON_AI_MODEL'] = 'llama3.2'
-os.environ['HANDS_ON_AI_API_KEY'] = 'YOUR_HANDS_ON_AI_API_KEY'
 os.environ['OPENWEATHER_API_KEY'] = 'YOUR_OPENWEATHER_API_KEY'
+os.environ['HANDS_ON_AI_API_KEY'] = 'YOUR_AI_API_KEY'
 ```
 
 Get your keys from:  
@@ -71,7 +66,7 @@ Get your keys from:
 
 ## ⚙️ How It Works
 
-**WeatherWise** follows a simple **data → analysis → AI → user output** pipeline.
+**WeatherWise** follows a simple **data → analysis → output** pipeline.
 
 ---
 
@@ -82,8 +77,8 @@ Get your keys from:
 ---
 
 ### 🧮 2. Process and Organise Data
-- Functions like `get_temps()` extract relevant fields (min/max/average).  
-- The data is cleaned and structured for visualisation and AI input.
+- Functions extract the relevant fields (min/max/average) and aggregate the 3-hourly readings into daily figures.  
+- The data is cleaned and structured for visualisation.
 
 ---
 
@@ -95,7 +90,7 @@ Get your keys from:
 
 ### 🤖 4. AI Interaction
 - User questions (e.g., *“Will it rain tomorrow in Perth?”*) are parsed by `parse_weather_question()`.  
-- `generate_weather_response()` combines AI analysis with forecast data to produce natural, contextual answers.
+- `generate_weather_response()` builds a prompt from the forecast data and sends it to an LLM for a natural-language answer.
 
 ---
 
@@ -105,7 +100,8 @@ Get your keys from:
 - 📍 Enter location & forecast days *(use a city name, e.g. `Bangkok`, not `Thailand`)*  
 - ☀️ Fetch Today’s Weather  
 - 📈 Show Charts  
-- 🤖 Ask AI Question  
+- 🏃 Should We Go Outside Tomorrow?  
+- 🤖 Ask Weather Question  
 - 👋 Quit Session  
 
 ---
@@ -114,16 +110,16 @@ Get your keys from:
 
 | Step | Action | Result |
 |------|---------|--------|
-| 1 | Enter: `Perth` | Loads weather data |
-| 2 | Click: ☀️ *Fetch Weather* | Shows temperature summary |
-| 3 | Ask: “Will it rain tomorrow?” | AI gives contextual advice |
+| 1 | Enter: `Paris` | Loads weather data |
+| 2 | Click: ☀️ *Fetch Weather* | Shows current temperature summary |
+| 3 | Click: 📈 *Show Temperature Chart* | Displays the daily forecast chart |
 
 ---
 
 ## 🎯 Project Purpose
 
-**WeatherWise** integrates APIs, AI, and data visualisation to make weather information more interactive and insightful.  
-It demonstrates how natural language and data analytics can support everyday decisions.
+**WeatherWise** integrates APIs and data visualisation to make weather information more interactive and insightful.  
+It demonstrates how live data, charts, and simple logic can support everyday decisions.
 
 ---
 
@@ -135,5 +131,6 @@ See **[PROMPTING.md](PROMPTING.md)** for five intentional prompting techniques w
 ---
 
 ## 🔍 Known Limitations & Future Improvements
-- The question parser uses a simple keyword heuristic to detect location, which can misread the location in some phrasings. A future version could use named-entity recognition for more reliable parsing.  
+- The natural-language AI feature was built against a course-provided LLM server that is no longer available, so that specific feature may not run live. The weather retrieval, charts, and rule-based advice all work independently of it. A future version could point this feature at a hosted LLM API (such as ollama.com cloud) to restore it.
+- The question parser uses a simple keyword heuristic to detect location, which can misread the location in some phrasings. A future version could use named-entity recognition for more reliable parsing.
 - Outdoor advice is rule-based (temperature thresholds), which is reliable and transparent; a future version could blend this with the AI model for richer suggestions.
