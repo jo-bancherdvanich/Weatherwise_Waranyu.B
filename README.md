@@ -11,6 +11,13 @@ This project is based on the **WeatherWise Assignment Starter Template**, enhanc
 
 ---
 
+<!-- 📸 Add a screenshot here once the app is running.
+     Upload your image to the repo (e.g. images/temperature-chart.png), then replace the line below:
+![WeatherWise temperature chart](images/temperature-chart.png)
+-->
+
+---
+
 ## 🧩 Overview
 
 **Features**
@@ -24,6 +31,8 @@ This project is based on the **WeatherWise Assignment Starter Template**, enhanc
 - Matplotlib visualisations  
 - AI conversation features  
 - Interactive UI with `ipywidgets`
+
+**Tech Stack:** Python · OpenWeatherMap API · matplotlib · ipywidgets · hands-on-ai
 
 **My Contribution**
 - Temperature and precipitation visualisations  
@@ -93,7 +102,7 @@ Get your keys from:
 ## 🧭 5. User Interface
 
 **Interactive options (via `ipywidgets`):**
-- 📍 Enter location & forecast days  
+- 📍 Enter location & forecast days *(use a city name, e.g. `Bangkok`, not `Thailand`)*  
 - ☀️ Fetch Today’s Weather  
 - 📈 Show Charts  
 - 🤖 Ask AI Question  
@@ -121,7 +130,7 @@ It demonstrates how natural language and data analytics can support everyday dec
 ## 🧠 AI Conversations
 
 All prompt logs are saved in `/ai-conversations/`.  
-See resources for examples and prompting tips.
+See **[PROMPTING.md](PROMPTING.md)** for five intentional prompting techniques with before/after code.
 
 ---
 
